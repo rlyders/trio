@@ -722,36 +722,36 @@ Next A
 8190 For A = 1 To 8
     If Left$(KY$, 1) = Chr$(32) Then KY$ = Right$(KY$, 8 - A) Else GoTo 8200
 Next A
-8200 RETURN
-8210 REM
-8220 REM capitalize file names
-8230 FOR A=1 TO 8:A$=RIGHT$(KY$,A):IF ASC(A$)=>97 AND ASC(A$)<=122 THEN KY$=LEFT$(KY$,(8-A))+CHR$(ASC(A$)-32)+RIGHT$(A$,A-1)
-8240 NEXT A:RETURN
-8250 REM
-8260 REM create a valid file name
-8270 FOR A=1 TO 8:AA=ASC(RIGHT$(KY$,A))
-8280 IF AA=33 OR (AA>34 AND AA<42) OR AA=45 OR (AA>46 AND AA<58) OR (AA>63 AND AA<91) OR (AA>93 AND AA<97) OR AA=123 OR AA=125 THEN 8310
-8290 IF AA=32 THEN IF RIGHT$(KY$,A)=SPACE$(A) THEN 8310
-8300 KY$=LEFT$(KY$,8-A)+"_"+RIGHT$(KY$,A-1)
-8310 NEXT A:RETURN
-8320 REM
-8330 REM END/SAVE/NEW GAME OPTIONS
-8331 A=7:B=0:C=14:D=1:ED=0:X1=10:Y1=20:O$(1)="save":O$(2)="end":O$(3)="new":O=3:GOSUB 8530
-8440 COLOR 0,0:LOCATE Y1,X1-8:PRINT SPACE$(19)
-8480 IF AA=0 THEN RETURN 2720
-8490 IF AA=1 THEN GOSUB 7460:GOSUB 7720:IF GN$<>"" AND ESC=0 THEN GOSUB 7210:GOTO 8320 ELSE ESC=0:GOTO 8320 ELSE IF AA=2 THEN COLOR 8,0:CLS:ED=1:RETURN ELSE ED=0:RETURN
-8500 REM
-8510 REM menus
-8520 Y1=12:X1=20:A=7:B=0:C=14:D=1
-8530 REM O$=Text:O$()=Options 1-5:O=# of options:a=forgnd:b=bakgnd:c=fore-high:d=bkgnd-high:x1=cntr x pos:y1=y pos:aa=current option #
-8540 DEF SEG=0:POKE 1050,PEEK(1052):AA=1
-8550 XX=LEN(O$):FOR F=1 TO O:XX=XX+LEN(O$(F))+3:NEXT F:XX=X1-INT((XX-3)/2)
-8560 COLOR A,B:LOCATE Y1,XX:PRINT O$+"[";:FOR AA=1 TO O-1:GOSUB 8740:PRINT O$(AA)+" | ";:NEXT:GOSUB 8740:PRINT O$(O)+"]";:AA=1
-8570 XXX=XX+LEN(O$)+1:LOCATE Y1,XXX:FOR F=1 TO O:IF AA=F THEN COLOR C,D:PRINT OO$(F); ELSE IF OO(F) THEN COLOR ZZ,B:PRINT O$(F) ELSE COLOR A,B:PRINT O$(F);
-8580 XXX=XXX+LEN(O$(F))+3:LOCATE Y1,XXX:NEXT
-8590 A$=INKEY$:ON LEN(A$)+1 GOTO 8590,8600,8630
-8600 IF A$=CHR$(13) THEN 8710
-8610 IF A$=CHR$(27) THEN AA=0:GOTO 8710
+8200 Return
+8210 Rem
+8220 Rem capitalize file names
+8230 For A = 1 To 8: A$ = Right$(KY$, A): If Asc(A$) >= 97 And Asc(A$) <= 122 Then KY$ = Left$(KY$, (8 - A)) + Chr$(Asc(A$) - 32) + Right$(A$, A - 1)
+8240 Next A: Return
+8250 Rem
+8260 Rem create a valid file name
+8270 For A = 1 To 8: AA = Asc(Right$(KY$, A))
+    8280 If AA = 33 Or (AA > 34 And AA < 42) Or AA = 45 Or (AA > 46 And AA < 58) Or (AA > 63 And AA < 91) Or (AA > 93 And AA < 97) Or AA = 123 Or AA = 125 Then 8310
+    8290 If AA = 32 Then If Right$(KY$, A) = Space$(A) Then 8310
+    8300 KY$ = Left$(KY$, 8 - A) + "_" + Right$(KY$, A - 1)
+8310 Next A: Return
+8320 Rem
+8330 Rem END/SAVE/NEW GAME OPTIONS
+8331 A = 7: B = 0: C = 14: D = 1: ED = 0: X1 = 10: Y1 = 20: O$(1) = "save": O$(2) = "end": O$(3) = "new": O = 3: GoSub 8530
+8440 Color 0, 0: Locate Y1, X1 - 8: Print Space$(19)
+8480 If AA = 0 Then Return 2720
+8490 If AA = 1 Then GoSub 7460: GoSub 7720: If GN$ <> "" And ESC = 0 Then GoSub 7210: GoTo 8320 Else ESC = 0: GoTo 8320 Else If AA = 2 Then Color 8, 0: Cls: ED = 1: Return Else ED = 0: Return
+8500 Rem
+8510 Rem menus
+8520 Y1 = 12: X1 = 20: A = 7: B = 0: C = 14: D = 1
+8530 Rem O$=Text:O$()=Options 1-5:O=# of options:a=forgnd:b=bakgnd:c=fore-high:d=bkgnd-high:x1=cntr x pos:y1=y pos:aa=current option #
+8540 Def Seg = 0: Poke 1050, Peek(1052): AA = 1
+8550 XX = Len(O$): For F = 1 To O: XX = XX + Len(O$(F)) + 3: Next F: XX = X1 - Int((XX - 3) / 2)
+8560 Color A, B: Locate Y1, XX: Print O$ + "[";: For AA = 1 To O - 1: GoSub 8740: Print O$(AA) + " | ";: Next: GoSub 8740: Print O$(O) + "]";: AA = 1
+8570 XXX = XX + Len(O$) + 1: Locate Y1, XXX: For F = 1 To O: If AA = F Then Color C, D: Print OO$(F); Else If OO(F) Then Color ZZ, B: Print O$(F) Else Color A, B: Print O$(F);
+8580 XXX = XXX + Len(O$(F)) + 3: Locate Y1, XXX: Next
+8590 A$ = InKey$: On Len(A$) + 1 GOTO 8590, 8600, 8630
+8600 If A$ = Chr$(13) Then 8710
+8610 If A$ = Chr$(27) Then AA = 0: GoTo 8710
 8620 FOR F=1 TO O:IF ASC(A$)=ASC(O$(F)) OR ASC(A$)=ASC(OO$(F)) THEN AA=F:GOTO 8710 ELSE NEXT:GOTO 8590
 8630 A$=RIGHT$(A$,1):IF A$<>CHR$(77) THEN  8660
 8640 IF AA=O THEN AA=1 ELSE AA=AA+1
