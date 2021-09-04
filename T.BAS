@@ -756,42 +756,42 @@ Next A
     If Asc(A$) = Asc(O$(F)) Or Asc(A$) = Asc(OO$(F)) Then AA = F: GoTo 8710
 Next
 GoTo 8590
-8630 A$=RIGHT$(A$,1):IF A$<>CHR$(77) THEN  8660
-8640 IF AA=O THEN AA=1 ELSE AA=AA+1
-8650 IF OO(AA) THEN 8640 ELSE 8570
-8660 IF A$<>CHR$(75) THEN 8690
-8670 IF AA=1 THEN AA=O ELSE AA=AA-1
-8680 IF OO(AA) THEN 8670 ELSE 8570
-8690 IF ASC(A$)=>120 AND ASC(A$)<=129 THEN WW=(ASC(A$)-120):GOTO 8590
-8700 IF A$=CHR$(79) THEN GOSUB 8320:IF ED THEN END ELSE 10 ELSE 8590
-8710 XXX=XX+LEN(O$)+1:LOCATE Y1,XXX:FOR F=1 TO O:IF AA=F THEN COLOR C,D:PRINT OO$(F); ELSE IF OO(F) THEN COLOR ZZ,B:PRINT O$(F) ELSE COLOR A,B:PRINT O$(F);
-8720 XXX=XXX+LEN(O$(F))+3:LOCATE Y1,XXX:NEXT
-8730 FOR F=1 TO O:O$(F)="":OO(F)=0:NEXT:O$="":RETURN
-8740 REM
-8750 REM Capitalizing
-8760 OO$(AA)=O$(AA):OO=LEN(OO$(AA)):FOR F=1 TO OO:A$=RIGHT$(OO$(AA),F):IF ASC(A$)=>97 AND ASC(A$)<=122 THEN OO$(AA)=LEFT$(OO$(AA),(OO-F))+CHR$(ASC(A$)-32)+RIGHT$(A$,F-1)
-8770 NEXT:RETURN
-20000 REM ENTER **************
-20001 REM A=7:B=0:C=14:D=1:Y1=13:X1=20:O$="Your name|":LK=10
-20010 ESC=0:LK=LK-1:COLOR C,B:LOCATE Y1,X1-LEN(O$),0:PRINT O$;:COLOR C,D:PRINT USING"\"+SPACE$(LK-1)+"\";OO$
-20020 LOCATE Y1,X1,0
-20030 KY=0
-20040 IF KY>LK THEN KY=0
-20050 IF INS THEN LOCATE ,,,3,7 ELSE LOCATE ,,,7,0
-20060 KY$(KY)=INKEY$
-20070 LOCATE Y1,X1+KY,1
-20080 IF LEN(KY$(KY)) THEN 20090 ELSE 20040
-20090 LOCATE ,,0
-20100 IF KY$(KY)=CHR$(13) THEN 20220
-20110 IF KY$(KY)=CHR$(9) THEN 20040
-20120 IF KY$(KY)=CHR$(27) THEN ESC=1:KY$=SPACE$(LK+1):INS=0:COLOR ,0:LOCATE Y1,X1-LEN(O$):PRINT SPACE$(LEN(O$)+LK+1):KY=0:SG=0:O$="":RETURN
-20130 IF LEN(KY$(KY))<>2 OR RIGHT$(KY$(KY),1)<>CHR$(83) THEN 20150
-20140 INS=0:FOR I=KY TO LK:LOCATE Y1,X1+I:PRINT CHR$(SCREEN(Y1,X1+1+I)):NEXT:GOTO 20040
-20150 IF LEN(KY$(KY))=2 AND RIGHT$(KY$(KY),1)=CHR$(82) THEN IF INS THEN INS=0:GOTO 20040 ELSE INS=1:GOTO 20040
-20160 IF LEN(KY$(KY))=2 AND RIGHT$(KY$(KY),1)=CHR$(75) THEN KY=KY-1:INS=0:IF KY<0 THEN KY=LK:GOTO 20040 ELSE 20040
-20170 IF LEN(KY$(KY))=1 AND KY$(KY)=CHR$(8) THEN KY=KY-1:IF KY<0 THEN KY=0:GOTO 20140 ELSE 20140
-20180 IF LEN(KY$(KY))=2 AND RIGHT$(KY$(KY),1)=CHR$(77) THEN INS=0:KY=KY+1:GOTO 20040
-20190 IF LEN(KY$(KY))<>1 THEN 20040 ELSE IF INS=0 THEN 20210 ELSE FOR I=LK TO KY STEP -1:LOCATE Y1,X1+I:PRINT CHR$(SCREEN(Y1,X1+I-1)):NEXT
-20200 LOCATE Y1,X1+KY
-20210 PRINT KY$(KY):KY=KY+1:GOTO 20040
-20220 KO$="":FOR KY=0 TO LK:KO$=KO$+CHR$(SCREEN(Y1,X1+KY)):NEXT:OO$="":O$="":LK=0:RETURN
+8630 A$ = Right$(A$, 1): If A$ <> Chr$(77) Then 8660
+8640 If AA = O Then AA = 1 Else AA = AA + 1
+8650 If OO(AA) Then 8640 Else GoTo 8570
+8660 If A$ <> Chr$(75) Then 8690
+8670 If AA = 1 Then AA = O Else AA = AA - 1
+8680 If OO(AA) Then 8670 Else GoTo 8570
+8690 If Asc(A$) >= 120 And Asc(A$) <= 129 Then WW = (Asc(A$) - 120): GoTo 8590
+8700 If A$ = Chr$(79) Then GoSub 8320: If ED Then End Else GoTo 10 Else GoTo 8590
+8710 XXX = XX + Len(O$) + 1: Locate Y1, XXX: For F = 1 To O: If AA = F Then Color C, D: Print OO$(F); Else If OO(F) Then Color ZZ, B: Print O$(F) Else Color A, B: Print O$(F);
+8720 XXX = XXX + Len(O$(F)) + 3: Locate Y1, XXX: Next
+8730 For F = 1 To O: O$(F) = "": OO(F) = 0: Next: O$ = "": Return
+8740 Rem
+8750 Rem Capitalizing
+8760 OO$(AA) = O$(AA): OO = Len(OO$(AA)): For F = 1 To OO: A$ = Right$(OO$(AA), F): If Asc(A$) >= 97 And Asc(A$) <= 122 Then OO$(AA) = Left$(OO$(AA), (OO - F)) + Chr$(Asc(A$) - 32) + Right$(A$, F - 1)
+8770 Next: Return
+20000 Rem ENTER **************
+20001 Rem A=7:B=0:C=14:D=1:Y1=13:X1=20:O$="Your name|":LK=10
+20010 ESC = 0: LK = LK - 1: Color C, B: Locate Y1, X1 - Len(O$), 0: Print O$;: Color C, D: Print Using "\" + Space$(LK - 1) + "\"; OO$
+20020 Locate Y1, X1, 0
+20030 KY = 0
+20040 If KY > LK Then KY = 0
+20050 If INS Then Locate , , , 3, 7 Else Locate , , , 7, 0
+20060 KY$(KY) = InKey$
+20070 Locate Y1, X1 + KY, 1
+20080 If Len(KY$(KY)) Then 20090 Else GoTo 20040
+20090 Locate , , 0
+20100 If KY$(KY) = Chr$(13) Then 20220
+20110 If KY$(KY) = Chr$(9) Then 20040
+20120 If KY$(KY) = Chr$(27) Then ESC = 1: KY$ = Space$(LK + 1): INS = 0: Color , 0: Locate Y1, X1 - Len(O$): Print Space$(Len(O$) + LK + 1): KY = 0: SG = 0: O$ = "": Return
+20130 If Len(KY$(KY)) <> 2 Or Right$(KY$(KY), 1) <> Chr$(83) Then 20150
+20140 INS = 0: For I = KY To LK: Locate Y1, X1 + I: Print Chr$(Screen(Y1, X1 + 1 + I)): Next: GoTo 20040
+20150 If Len(KY$(KY)) = 2 And Right$(KY$(KY), 1) = Chr$(82) Then If INS Then INS = 0: GoTo 20040 Else INS = 1: GoTo 20040
+20160 If Len(KY$(KY)) = 2 And Right$(KY$(KY), 1) = Chr$(75) Then KY = KY - 1: INS = 0: If KY < 0 Then KY = LK: GoTo 20040 Else GoTo 20040
+20170 If Len(KY$(KY)) = 1 And KY$(KY) = Chr$(8) Then KY = KY - 1: If KY < 0 Then KY = 0: GoTo 20140 Else GoTo 20140
+20180 If Len(KY$(KY)) = 2 And Right$(KY$(KY), 1) = Chr$(77) Then INS = 0: KY = KY + 1: GoTo 20040
+20190 If Len(KY$(KY)) <> 1 Then 20040 Else If INS = 0 Then 20210 Else For I = LK To KY Step -1: Locate Y1, X1 + I: Print Chr$(Screen(Y1, X1 + I - 1)): Next
+20200 Locate Y1, X1 + KY
+20210 Print KY$(KY): KY = KY + 1: GoTo 20040
+20220 KO$ = "": For KY = 0 To LK: KO$ = KO$ + Chr$(Screen(Y1, X1 + KY)): Next: OO$ = "": O$ = "": LK = 0: Return
