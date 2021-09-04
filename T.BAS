@@ -679,46 +679,46 @@
 7460 Rem
 7470 Rem load file names
 7480 Open "I", #1, "T.FF"
-    7485 For A = 1 To 20
-        7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
-    7495 Next A
-    7500 Close #1: If GN = 0 Then SG = 0: Return Else SG = 1: Return
-    7510 Rem
-    7520 Rem choose from saved game list
-    7530 Poke 1050, Peek(1052): If GN = 0 Then SG = 0: Color , 0: Cls: Return
-    7540 Color 8, 0: Locate 2, 12: Print "�����������ͻ"
-    7550 For A = 1 To 20: Locate 2 + A, 12: Print "�           �";: Next A
-    7560 Locate 23, 12: Print "�����������ͼ";
-    7570 X1 = 13: Color ZZ, 0: For A = 1 To GN: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A);: Next: A = 1: LA = 1
-    7580 Color ZZ, 0: Locate LA + 2, X1: Print Using "##)"; LA;: Print GN$(LA) + Space$(8 - Len(GN$(LA)));: Color 14, 1: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A) + Space$(8 - Len(GN$(A)));
-    7590 A$ = InKey$: On Len(A$) + 1 GOTO 7590, 7600, 7620
-    7600 If A$ = Chr$(13) Then 7670
-    7610 If A$ = Chr$(27) Then SG = 0: Color , 0: Cls: Return 810 Else GoTo 7590
-    7620 A$ = Right$(A$, 1): If A$ = Chr$(80) Then LA = A: A = A + 1: GoTo 7650
-    7630 If A$ = Chr$(83) Then Kill GN$(A) + ".TF": For C = A To GN: GN$(C) = GN$(C + 1): Next C: GN = GN - 1: GoSub 7430: GoTo 7510
-    7640 If A$ = Chr$(72) Then LA = A: A = A - 1 Else GoTo 7590
-    7650 If A > GN Then A = 1 Else If A < 1 Then A = GN
-    7660 GoTo 7580
-    7670 GN$ = GN$(A): Color , 0: Cls: Return
-    7680 Rem
-    7690 Rem ERASE GAME FILE
+7485 For A = 1 To 20
+    7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
+7495 Next A
+7500 Close #1: If GN = 0 Then SG = 0: Return Else SG = 1: Return
+7510 Rem
+7520 Rem choose from saved game list
+7530 Poke 1050, Peek(1052): If GN = 0 Then SG = 0: Color , 0: Cls: Return
+7540 Color 8, 0: Locate 2, 12: Print "�����������ͻ"
+7550 For A = 1 To 20: Locate 2 + A, 12: Print "�           �";: Next A
+7560 Locate 23, 12: Print "�����������ͼ";
+7570 X1 = 13: Color ZZ, 0: For A = 1 To GN: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A);: Next: A = 1: LA = 1
+7580 Color ZZ, 0: Locate LA + 2, X1: Print Using "##)"; LA;: Print GN$(LA) + Space$(8 - Len(GN$(LA)));: Color 14, 1: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A) + Space$(8 - Len(GN$(A)));
+7590 A$ = InKey$: On Len(A$) + 1 GOTO 7590, 7600, 7620
+7600 If A$ = Chr$(13) Then 7670
+7610 If A$ = Chr$(27) Then SG = 0: Color , 0: Cls: Return 810 Else GoTo 7590
+7620 A$ = Right$(A$, 1): If A$ = Chr$(80) Then LA = A: A = A + 1: GoTo 7650
+7630 If A$ = Chr$(83) Then Kill GN$(A) + ".TF": For C = A To GN: GN$(C) = GN$(C + 1): Next C: GN = GN - 1: GoSub 7430: GoTo 7510
+7640 If A$ = Chr$(72) Then LA = A: A = A - 1 Else GoTo 7590
+7650 If A > GN Then A = 1 Else If A < 1 Then A = GN
+7660 GoTo 7580
+7670 GN$ = GN$(A): Color , 0: Cls: Return
+7680 Rem
+7690 Rem ERASE GAME FILE
 7700 For A = 1 To 20
     If Not GN$ <> GN$(A) Then GoTo 7710
 Next A
-7710 FOR A=A TO 20:GN$(A)=GN$(A+1):NEXT A:GN=GN-1:KILL GN$+".TF":RETURN
-7720 REM
-7730 REM ACCEPT INFORMATION
-7731 A=14:B=0:C=14:D=1:LK=8:OO$=GN$:O$="File Name|":X1=12:Y1=20:KY$="":GOSUB 20000:IF ESC THEN RETURN
-8100 KY$=KO$:IF KY$=SPACE$(8) THEN GOSUB 8121:RETURN ELSE K$=KY$:GOSUB 8210:GOSUB 8170:GOSUB 8250
-8110 IF K$<>KY$ THEN GN$=KY$:GOTO 7731 ELSE GOSUB 8130:GOSUB 8121
-8120 IF KY$<>"" THEN GN=GN+1:GN$(GN)=KY$:GN$=KY$:GOSUB 7430:RETURN ELSE 7731
-8121 LOCATE Y1,X1-10:COLOR 7,0:PRINT SPACE$(18);:RETURN
-8130 REM
-8140 REM SEARCH FOR DUPLICATE FILES
-8150 FOR A=1 TO GN:IF KY$=GN$(A) THEN KY$=""
-8160 NEXT A:IF KY$="" THEN LOCATE 20,2:COLOR 14,4:PRINT "DUPLICATE FILE NAME":FOR W=1 TO 3:A$=TIME$:WHILE A$=TIME$:WEND:NEXT W:COLOR ,0:LOCATE 20,2:PRINT SPACE$(19):RETURN ELSE RETURN
-8170 REM
-8180 REM ERASE SPACES IN FILE NAME
+7710 For A = A To 20: GN$(A) = GN$(A + 1): Next A: GN = GN - 1: Kill GN$ + ".TF": Return
+7720 Rem
+7730 Rem ACCEPT INFORMATION
+7731 A = 14: B = 0: C = 14: D = 1: LK = 8: OO$ = GN$: O$ = "File Name|": X1 = 12: Y1 = 20: KY$ = "": GoSub 20000: If ESC Then Return
+8100 KY$ = KO$: If KY$ = Space$(8) Then GoSub 8121: Return Else K$ = KY$: GoSub 8210: GoSub 8170: GoSub 8250
+8110 If K$ <> KY$ Then GN$ = KY$: GoTo 7731 Else GoSub 8130: GoSub 8121
+8120 If KY$ <> "" Then GN = GN + 1: GN$(GN) = KY$: GN$ = KY$: GoSub 7430: Return Else GoTo 7731
+8121 Locate Y1, X1 - 10: Color 7, 0: Print Space$(18);: Return
+8130 Rem
+8140 Rem SEARCH FOR DUPLICATE FILES
+8150 For A = 1 To GN: If KY$ = GN$(A) Then KY$ = ""
+8160 Next A: If KY$ = "" Then Locate 20, 2: Color 14, 4: Print "DUPLICATE FILE NAME": For W = 1 To 3: A$ = Time$: While A$ = Time$: Wend: Next W: Color , 0: Locate 20, 2: Print Space$(19): Return Else Return
+8170 Rem
+8180 Rem ERASE SPACES IN FILE NAME
 8190 FOR A=1 TO 8:IF LEFT$(KY$,1)=CHR$(32) THEN KY$=RIGHT$(KY$,8-A):NEXT A
 8200 RETURN
 8210 REM
