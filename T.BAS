@@ -73,8 +73,11 @@
 1310 Locate 11, 11: Print " You will now have a"
 1320 Locate , 10: Print "  20-second countdown"
 1330 Locate , 9: Print "before your game begins..."
-1340 For W = 1 To WW: A$ = Time$: While A$ = Time$
-1350 IF LEN(INKEY$) THEN 1370 ELSE WEND
+1340 For W = 1 To WW
+    1342 A$ = Time$
+    1345 While A$ = Time$
+        1350 If Len(InKey$) Then 1370
+    1355 Wend
 1360 NEXT W
 1370 SCREEN 0,1:COLOR 0,0:CLS
 1380 SCRN=1:GOSUB 5840
@@ -681,9 +684,9 @@
 7510 REM
 7520 REM choose from saved game list
 7530 POKE 1050,PEEK(1052):IF GN=0 THEN SG=0:COLOR ,0:CLS:RETURN
-7540 COLOR 8,0:LOCATE 2,12:PRINT"ÉÍÍÍÍÍÍÍÍÍÍÍ»"
-7550 FOR A=1 TO 20:LOCATE 2+A,12:PRINT"º           º";:NEXT A
-7560 LOCATE 23,12:PRINT"ÈÍÍÍÍÍÍÍÍÍÍÍ¼";
+7540 COLOR 8,0:LOCATE 2,12:PRINT"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»"
+7550 FOR A=1 TO 20:LOCATE 2+A,12:PRINT"ï¿½           ï¿½";:NEXT A
+7560 LOCATE 23,12:PRINT"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼";
 7570 X1=13:COLOR ZZ,0:FOR A=1 TO GN:LOCATE A+2,X1:PRINT USING"##)";A;:PRINT GN$(A);:NEXT:A=1:LA=1
 7580 COLOR ZZ,0:LOCATE LA+2,X1:PRINT USING"##)";LA;:PRINT GN$(LA)+SPACE$(8-LEN(GN$(LA)));:COLOR 14,1:LOCATE A+2,X1:PRINT USING"##)";A;:PRINT GN$(A)+SPACE$(8-LEN(GN$(A)));
 7590 A$=INKEY$:ON LEN(A$)+1 GOTO 7590,7600,7620
