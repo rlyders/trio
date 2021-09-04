@@ -1,79 +1,79 @@
-10 CLEAR:DEFINT A-Z
-20 KEY 1,CHR$(27)+"LIST"+CHR$(13):KEY 2,CHR$(27)+"LIST ":KEY 3,CHR$(27)+"RUN"+CHR$(13):KEY 4,CHR$(27)+"RUN  "+CHR$(34):KEY 5,CHR$(27)+"SAVE "+CHR$(34)+"T":KEY 6,CHR$(27)+"FILES"+CHR$(13):KEY 7,CHR$(27)+"LOAD "+CHR$(34):KEY 8,CHR$(27)+"RUN "
-30 KEY 9,CHR$(27)+"RENUM"+CHR$(13):KEY 10,CHR$(27)+"SCREEN 0,1"+CHR$(13)
-40  REM
-50  REM     TRIO  - Graphics
-60 ON ERROR GOTO 5730:CLS:DIM O$(20),OO$(20),OO(20)
-70 SCREEN 1:KEY OFF:BCOLOR=1:PALET=0:COLOR BCOLOR,PALET
-80 PI!=22/7:C=2:B=3:X=20:Y=69:GOSUB 350:C=3:B=1:X=25:Y=64:GOSUB 350
-90 LOCATE 17,12,0:PRINT"A Game Created By"
-100 LOCATE ,6,0:PRINT"Richard Jason Lyders-Gustafson"
-110 LOCATE ,16,0:PRINT"With Ideas"
-120 LOCATE ,19,0:PRINT"From"
-130 LOCATE ,13,0:PRINT"Olaf Schabirosky"
-131 PRINT:PRINT:COLOR 1:LOCATE ,13,0:PRINT"[PRESS ANY KEY]";
-140 DEF SEG=0:POKE 1050,PEEK(1052):WHILE LEN(INKEY$)=0:WEND
-181 SCREEN 0,1:WIDTH 40:COLOR ,0,1:LOCATE ,,0:CLS:O$="Instructions-":O$(1)="no":O$(2)="yes":O=2:GOSUB 8500
-290 IF AA=2 THEN GOSUB 4460:GOTO 680 ELSE IF AA=1 THEN 680 ELSE 10
+10 Clear: DefInt A-Z
+20 KEY 1, Chr$(27) + "LIST" + Chr$(13): KEY 2, Chr$(27) + "LIST ": KEY 3, Chr$(27) + "RUN" + Chr$(13): KEY 4, Chr$(27) + "RUN  " + Chr$(34): KEY 5, Chr$(27) + "SAVE " + Chr$(34) + "T": KEY 6, Chr$(27) + "FILES" + Chr$(13): KEY 7, Chr$(27) + "LOAD " + Chr$(34): KEY 8, Chr$(27) + "RUN "
+30 KEY 9, Chr$(27) + "RENUM" + Chr$(13): KEY 10, Chr$(27) + "SCREEN 0,1" + Chr$(13)
+40 Rem
+50 Rem     TRIO  - Graphics
+60 On Error GoTo 5730: Cls: Dim O$(20), OO$(20), OO(20)
+70 Screen 1: KEY Off: BCOLOR = 1: PALET = 0: Color BCOLOR, PALET
+80 PI! = 22 / 7: C = 2: B = 3: X = 20: Y = 69: GoSub 350: C = 3: B = 1: X = 25: Y = 64: GoSub 350
+90 Locate 17, 12, 0: Print "A Game Created By"
+100 Locate , 6, 0: Print "Richard Jason Lyders-Gustafson"
+110 Locate , 16, 0: Print "With Ideas"
+120 Locate , 19, 0: Print "From"
+130 Locate , 13, 0: Print "Olaf Schabirosky"
+131 Print: Print: Color 1: Locate , 13, 0: Print "[PRESS ANY KEY]";
+140 Def Seg = 0: Poke 1050, Peek(1052): While Len(InKey$) = 0: Wend
+181 Screen 0, 1: Width 40: Color , 0, 1: Locate , , 0: Cls: O$ = "Instructions-": O$(1) = "no": O$(2) = "yes": O = 2: GoSub 8500
+290 If AA = 2 Then GoSub 4460: GoTo 680 Else If AA = 1 Then 680 Else GoTo 10
 350 '
-360 CIRCLE (X+45,Y),10,B,3*PI!/2,PI!/2
-370 CIRCLE (X-5,Y),10,B,PI!/2,3*PI!/2
-380 LINE (X-5,Y-9)-(X+45,Y-9),B
-390 LINE (X-5,Y+9)-(X+10,Y+9),B
-400 LINE (X+30,Y+9)-(X+45,Y+9),B
-410 CIRCLE (X+20,Y+50),10,B,PI!,0
-420 LINE (X+30,Y+50)-(X+30,Y+9),B
-430 LINE (X+10,Y+50)-(X+10,Y+9),B
-440 PAINT (X+20,Y+50),C,B
-450 X=X+80
-460 CIRCLE(X,Y),10,B,PI!/2,PI!
-470 CIRCLE(X,Y+50),10,B,PI!,0
-480 LINE(X-10,Y)-(X-10,Y+50),B
-490 LINE(X+1,Y-8)-(X+30,Y-8),B
-500 LINE(X+10,Y+45)-(X+10,Y+50),B
-510 CIRCLE(X+27,Y+13),25,B,3*PI!/2,PI!/2,5/6
-520 CIRCLE(X+10,Y+13),7,B,-3*PI!/2,-PI!/2
-530 CIRCLE(X+29,Y+50),10,B,3*PI!/2.5,2*PI!/6.7
-540 LINE(X+37,Y+45)-(X+27,Y+35),B
-550 LINE(X+22,Y+56)-(X+10,Y+44),B
-560 PAINT (X,Y),C,B
-570 X=X+80
-580 CIRCLE(X,Y+50),10,B,PI!,0
-590 CIRCLE(X,Y),10,B,0,PI!
-600 LINE(X-10,Y)-(X-10,Y+50),B
-610 LINE(X+10,Y)-(X+10,Y+50),B
-620 PAINT (X,Y),C,B
-630 X=X+70:Y=Y+25
-640 CIRCLE(X,Y),7,B
-650 CIRCLE(X,Y),40,B
-660 PAINT (X,Y+10),C,B
-670 RETURN
-680   '##################################
-690   '##         main program         ##
-700   '##################################
-710 CLEAR:ON ERROR GOTO 5730
-720 DIM GN$(22),UNK$(10),KY$(11),A(7,7),S(40,3),A$(9):WW=4
-721 erase O$,OO$,OO
-730 SCREEN 0,1:COLOR ,0,1:CLS:ZZ=8
-740 KEY OFF:WIDTH 40:LOCATE ,,0
-750 REM
-760 REM  load scores/names
-770 DIM SCORE(11),NAMES$(11)
-780 OPEN "I",#1,"T.F":FOR N=0 TO 9:INPUT #1,NAMES$(N),SCORE(N):NEXT N:CLOSE #1
-790 SCREEN 0,1:COLOR 0,0,1:CLS
-800 CNAME=10
-810 GOSUB 7460
-811 IF SG THEN GOSUB 7280:IF SG THEN GOSUB 7510:IF SG THEN GOSUB 7250:GOSUB 7680:GOSUB 7430:GOTO 1300
-820 IF ESC THEN ESC=0:GOTO 181 ELSE COLOR ,0,1:CLS
-840 NAMES$(CNAME)=""
-850 Y1=12:X1=20:A=14:B=0:C=14:D=1:LK=10:OO$=LASTNAME$:O$="Your Name|":GOSUB 20000:SG=0:IF ESC THEN ESC=0:GOSUB 7460:IF SG THEN 811 ELSE 181
-851 NAMES$(CNAME)=KO$:IF NAMES$(CNAME)=SPACE$(10) THEN NAMES$(CNAME)=CHR$(175)+SPACE$(6)+CHR$(174)
-860 COLOR ,0:LOCATE Y1,X1-10:PRINT SPACE$(20)
-1300 COLOR 14,0
-1310 LOCATE 11,11:PRINT" You will now have a"
-1320 LOCATE ,10:PRINT"  20-second countdown"
-1330 LOCATE ,9:PRINT"before your game begins..."
-1340 FOR W=1 TO WW:A$=TIME$:WHILE A$=TIME$
+360 Circle (X + 45, Y), 10, B, 3 * PI! / 2, PI! / 2
+370 Circle (X - 5, Y), 10, B, PI! / 2, 3 * PI! / 2
+380 Line (X - 5, Y - 9)-(X + 45, Y - 9), B
+390 Line (X - 5, Y + 9)-(X + 10, Y + 9), B
+400 Line (X + 30, Y + 9)-(X + 45, Y + 9), B
+410 Circle (X + 20, Y + 50), 10, B, PI!, 0
+420 Line (X + 30, Y + 50)-(X + 30, Y + 9), B
+430 Line (X + 10, Y + 50)-(X + 10, Y + 9), B
+440 Paint (X + 20, Y + 50), C, B
+450 X = X + 80
+460 Circle (X, Y), 10, B, PI! / 2, PI!
+470 Circle (X, Y + 50), 10, B, PI!, 0
+480 Line (X - 10, Y)-(X - 10, Y + 50), B
+490 Line (X + 1, Y - 8)-(X + 30, Y - 8), B
+500 Line (X + 10, Y + 45)-(X + 10, Y + 50), B
+510 Circle (X + 27, Y + 13), 25, B, 3 * PI! / 2, PI! / 2, 5 / 6
+520 Circle (X + 10, Y + 13), 7, B, -3 * PI! / 2, -PI! / 2
+530 Circle (X + 29, Y + 50), 10, B, 3 * PI! / 2.5, 2 * PI! / 6.7
+540 Line (X + 37, Y + 45)-(X + 27, Y + 35), B
+550 Line (X + 22, Y + 56)-(X + 10, Y + 44), B
+560 Paint (X, Y), C, B
+570 X = X + 80
+580 Circle (X, Y + 50), 10, B, PI!, 0
+590 Circle (X, Y), 10, B, 0, PI!
+600 Line (X - 10, Y)-(X - 10, Y + 50), B
+610 Line (X + 10, Y)-(X + 10, Y + 50), B
+620 Paint (X, Y), C, B
+630 X = X + 70: Y = Y + 25
+640 Circle (X, Y), 7, B
+650 Circle (X, Y), 40, B
+660 Paint (X, Y + 10), C, B
+670 Return
+680 '##################################
+690 '##         main program         ##
+700 '##################################
+710 Clear: On Error GoTo 5730
+720 Dim GN$(22), UNK$(10), KY$(11), A(7, 7), S(40, 3), A$(9): WW = 4
+721 Erase O$, OO$, OO
+730 Screen 0, 1: Color , 0, 1: Cls: ZZ = 8
+740 KEY Off: Width 40: Locate , , 0
+750 Rem
+760 Rem  load scores/names
+770 Dim SCORE(11), NAMES$(11)
+780 Open "I", #1, "T.F": For N = 0 To 9: Input #1, NAMES$(N), SCORE(N): Next N: Close #1
+790 Screen 0, 1: Color 0, 0, 1: Cls
+800 CNAME = 10
+810 GoSub 7460
+811 If SG Then GoSub 7280: If SG Then GoSub 7510: If SG Then GoSub 7250: GoSub 7680: GoSub 7430: GoTo 1300
+820 If ESC Then ESC = 0: GoTo 181 Else Color , 0, 1: Cls
+840 NAMES$(CNAME) = ""
+850 Y1 = 12: X1 = 20: A = 14: B = 0: C = 14: D = 1: LK = 10: OO$ = LASTNAME$: O$ = "Your Name|": GoSub 20000: SG = 0: If ESC Then ESC = 0: GoSub 7460: If SG Then 811 Else GoTo 181
+851 NAMES$(CNAME) = KO$: If NAMES$(CNAME) = Space$(10) Then NAMES$(CNAME) = Chr$(175) + Space$(6) + Chr$(174)
+860 Color , 0: Locate Y1, X1 - 10: Print Space$(20)
+1300 Color 14, 0
+1310 Locate 11, 11: Print " You will now have a"
+1320 Locate , 10: Print "  20-second countdown"
+1330 Locate , 9: Print "before your game begins..."
+1340 For W = 1 To WW: A$ = Time$: While A$ = Time$
 1350 IF LEN(INKEY$) THEN 1370 ELSE WEND
 1360 NEXT W
 1370 SCREEN 0,1:COLOR 0,0:CLS
