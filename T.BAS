@@ -786,7 +786,12 @@ GoTo 8590
 20110 If KY$(KY) = Chr$(9) Then 20040
 20120 If KY$(KY) = Chr$(27) Then ESC = 1: KY$ = Space$(LK + 1): INS = 0: Color , 0: Locate Y1, X1 - Len(O$): Print Space$(Len(O$) + LK + 1): KY = 0: SG = 0: O$ = "": Return
 20130 If Len(KY$(KY)) <> 2 Or Right$(KY$(KY), 1) <> Chr$(83) Then 20150
-20140 INS = 0: For I = KY To LK: Locate Y1, X1 + I: Print Chr$(Screen(Y1, X1 + 1 + I)): Next: GoTo 20040
+20140 INS = 0
+For I = KY To LK
+    Locate Y1, X1 + I
+    Print Chr$(Screen(Y1, X1 + 1 + I))
+Next
+GoTo 20040
 20150 If Len(KY$(KY)) = 2 And Right$(KY$(KY), 1) = Chr$(82) Then If INS Then INS = 0: GoTo 20040 Else INS = 1: GoTo 20040
 20160 If Len(KY$(KY)) = 2 And Right$(KY$(KY), 1) = Chr$(75) Then KY = KY - 1: INS = 0: If KY < 0 Then KY = LK: GoTo 20040 Else GoTo 20040
 20170 If Len(KY$(KY)) = 1 And KY$(KY) = Chr$(8) Then KY = KY - 1: If KY < 0 Then KY = 0: GoTo 20140 Else GoTo 20140
