@@ -678,7 +678,7 @@
 7450 Open "O", #1, "T.FF": For A = 1 To GN: Write #1, GN$(A): Next A: Close #1: Return
 7460 Rem
 7470 Rem load file names
-7480 Open "I", #1, "T.FF": For A = 1 To 20
+7480 Open "I", #1, "T.FF"
     7485 For A = 1 To 20
         7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
     7495 Next A
