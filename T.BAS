@@ -679,29 +679,29 @@
 7460 Rem
 7470 Rem load file names
 7480 Open "I", #1, "T.FF": For A = 1 To 20
-7485 For A = 1 To 20
-    7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
-7495 Next A
-7500 CLOSE #1:IF GN=0 THEN SG=0:RETURN ELSE SG=1:RETURN
-7510 REM
-7520 REM choose from saved game list
-7530 POKE 1050,PEEK(1052):IF GN=0 THEN SG=0:COLOR ,0:CLS:RETURN
-7540 COLOR 8,0:LOCATE 2,12:PRINT"�����������ͻ"
-7550 FOR A=1 TO 20:LOCATE 2+A,12:PRINT"�           �";:NEXT A
-7560 LOCATE 23,12:PRINT"�����������ͼ";
-7570 X1=13:COLOR ZZ,0:FOR A=1 TO GN:LOCATE A+2,X1:PRINT USING"##)";A;:PRINT GN$(A);:NEXT:A=1:LA=1
-7580 COLOR ZZ,0:LOCATE LA+2,X1:PRINT USING"##)";LA;:PRINT GN$(LA)+SPACE$(8-LEN(GN$(LA)));:COLOR 14,1:LOCATE A+2,X1:PRINT USING"##)";A;:PRINT GN$(A)+SPACE$(8-LEN(GN$(A)));
-7590 A$=INKEY$:ON LEN(A$)+1 GOTO 7590,7600,7620
-7600 IF A$=CHR$(13) THEN 7670
-7610 IF A$=CHR$(27) THEN SG=0:COLOR ,0:CLS:RETURN 810 ELSE 7590
-7620 A$=RIGHT$(A$,1):IF A$=CHR$(80) THEN LA=A:A=A+1:GOTO 7650
-7630 IF A$=CHR$(83) THEN KILL GN$(A)+".TF":FOR C=A TO GN:GN$(C)=GN$(C+1):NEXT C:GN=GN-1:GOSUB 7430:GOTO 7510
-7640 IF A$=CHR$(72) THEN LA=A:A=A-1 ELSE 7590
-7650 IF A>GN THEN A=1 ELSE IF A<1 THEN A=GN
-7660 GOTO 7580
-7670 GN$=GN$(A):COLOR ,0:CLS:RETURN
-7680 REM
-7690 REM ERASE GAME FILE
+    7485 For A = 1 To 20
+        7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
+    7495 Next A
+    7500 Close #1: If GN = 0 Then SG = 0: Return Else SG = 1: Return
+    7510 Rem
+    7520 Rem choose from saved game list
+    7530 Poke 1050, Peek(1052): If GN = 0 Then SG = 0: Color , 0: Cls: Return
+    7540 Color 8, 0: Locate 2, 12: Print "�����������ͻ"
+    7550 For A = 1 To 20: Locate 2 + A, 12: Print "�           �";: Next A
+    7560 Locate 23, 12: Print "�����������ͼ";
+    7570 X1 = 13: Color ZZ, 0: For A = 1 To GN: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A);: Next: A = 1: LA = 1
+    7580 Color ZZ, 0: Locate LA + 2, X1: Print Using "##)"; LA;: Print GN$(LA) + Space$(8 - Len(GN$(LA)));: Color 14, 1: Locate A + 2, X1: Print Using "##)"; A;: Print GN$(A) + Space$(8 - Len(GN$(A)));
+    7590 A$ = InKey$: On Len(A$) + 1 GOTO 7590, 7600, 7620
+    7600 If A$ = Chr$(13) Then 7670
+    7610 If A$ = Chr$(27) Then SG = 0: Color , 0: Cls: Return 810 Else GoTo 7590
+    7620 A$ = Right$(A$, 1): If A$ = Chr$(80) Then LA = A: A = A + 1: GoTo 7650
+    7630 If A$ = Chr$(83) Then Kill GN$(A) + ".TF": For C = A To GN: GN$(C) = GN$(C + 1): Next C: GN = GN - 1: GoSub 7430: GoTo 7510
+    7640 If A$ = Chr$(72) Then LA = A: A = A - 1 Else GoTo 7590
+    7650 If A > GN Then A = 1 Else If A < 1 Then A = GN
+    7660 GoTo 7580
+    7670 GN$ = GN$(A): Color , 0: Cls: Return
+    7680 Rem
+    7690 Rem ERASE GAME FILE
 7700 FOR A=1 TO 20:IF GN$<>GN$(A) THEN NEXT A
 7710 FOR A=A TO 20:GN$(A)=GN$(A+1):NEXT A:GN=GN-1:KILL GN$+".TF":RETURN
 7720 REM
