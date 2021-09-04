@@ -719,7 +719,9 @@ Next A
 8160 Next A: If KY$ = "" Then Locate 20, 2: Color 14, 4: Print "DUPLICATE FILE NAME": For W = 1 To 3: A$ = Time$: While A$ = Time$: Wend: Next W: Color , 0: Locate 20, 2: Print Space$(19): Return Else Return
 8170 Rem
 8180 Rem ERASE SPACES IN FILE NAME
-8190 FOR A=1 TO 8:IF LEFT$(KY$,1)=CHR$(32) THEN KY$=RIGHT$(KY$,8-A):NEXT A
+8190 For A = 1 To 8
+    If Left$(KY$, 1) = Chr$(32) Then KY$ = Right$(KY$, 8 - A) Else GoTo 8200
+Next A
 8200 RETURN
 8210 REM
 8220 REM capitalize file names
