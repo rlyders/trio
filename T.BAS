@@ -414,271 +414,271 @@
 4700 Color 7: Print "ANSWER";
 4710 Color 8: Print "' is yellow on blue print)"
 4720 Color 7, 1: Locate 3, 2: Print Using "###"; 1
-4730 COLOR 14,0:LOCATE 3,13:PRINT CHR$(17),CHR$(205);
-4740 COLOR ,1:PRINT" ANSWER ";
-4750 IF LEN(INKEY$) THEN 4750
-4760 IF LEN(INKEY$) THEN 4770 ELSE 4760
-4770 COLOR 7,0:LOCATE 4,42:PRINT"             A sample round:          "
-4780 COLOR 8:PRINT:LOCATE ,42:PRINT "   1)The `";
-4790 COLOR 7:PRINT"ANSWER";
-4800 COLOR 8:PRINT"' is displayed.       "
-4810 LOCATE ,42:PRINT"     In this example it is `";
-4820 COLOR 14,1:PRINT"7";
-4830 COLOR 8,0:PRINT"'.       "
-4840 LOCATE ,42:PRINT"   2)Search for your three guesses. "
-4850 LOCATE ,42:PRINT"          In this example:          "
-4860 LOCATE ,42:PRINT"          `";
-4870 COLOR 7:PRINT"GUESS 1";
-4880 COLOR 8:PRINT"' is `";
-4890 COLOR 12:PRINT"6";
-4900 COLOR 8:PRINT"'            "
-4910 LOCATE ,42:PRINT"          `";
-4920 COLOR 7:PRINT"GUESS 2";
-4930 COLOR 8:PRINT"' is `";
-4940 COLOR 12:PRINT"2";
-4950 COLOR 8:PRINT"'            "
-4960 LOCATE ,42:PRINT"          `";
-4970 COLOR 7:PRINT"GUESS 3";
-4980 COLOR 8:PRINT"' is `";
-4990 COLOR 12:PRINT"5";
-5000 COLOR 8:PRINT"'            "
-5010 COLOR 12:LOCATE ,42:PRINT"            6 ";
-5020 COLOR 8:PRINT"x ";
-5030 COLOR 12:PRINT"2 ";
-5040 COLOR 8 :PRINT"- ";
-5050 COLOR 12:PRINT"5 ";
-5060 COLOR 8:PRINT"= ";
-5070 COLOR 14,1:PRINT"7";:COLOR ,0:PRINT "             "
-5080 COLOR 8,0:LOCATE ,42:PRINT"   3)Enter your guesses in order of:  "
-5090 LOCATE ,42:PRINT"     `";
-5100 COLOR 7:PRINT"GUESS 1";
-5110 COLOR 8:PRINT"', `";
-5120 COLOR 7:PRINT"GUESS 2";
-5130 COLOR 8:PRINT"', `";
-5140 COLOR 7:PRINT"GUESS 3";
-5150 COLOR 8:PRINT"'. "
-5160 LOCATE ,42:PRINT"   4)The computer will check your     "
-5170 LOCATE ,42:PRINT"     set of guesses.                  "
-5180 LOCATE ,42:PRINT"   5)If correct, a new round begins.  "
-5190 LOCATE ,42:PRINT"   6)If incorrect, the same round     "
-5200 LOCATE ,42:PRINT"     continues.                       "
-5210 COLOR 12,0:LOCATE 6,8:PRINT"5"
-5220 LOCATE 8,5:PRINT"2"
-5230 LOCATE 10,2:PRINT"6"
-5240 IF LEN(INKEY$) THEN 5240
-5250 IF LEN(INKEY$) THEN 5260 ELSE 5250
-5260 COLOR 7:LOCATE 3,42:PRINT"            SPECIAL KEYS              "
-5270 COLOR 7:LOCATE ,42:PRINT"                                      "
-5280 LOCATE 5,42:PRINT"  `DEL':";
-5290 COLOR 8:PRINT"Erases guesses                "
-5300 COLOR 7:LOCATE ,42:PRINT"  `BACKSPACE':";
-5310 COLOR 8:PRINT"Erases last guess       "
-5320 COLOR 7:LOCATE ,42:PRINT"  `FN'-`END':";
-5330 COLOR 8:PRINT"Ends & saves game        "
-5340 COLOR 7:LOCATE ,42:PRINT"  `INS':";
-5350 COLOR 8:PRINT"Ends current round,           "
-5360 LOCATE ,42:PRINT"        displays correct guesses      "
-5370 COLOR 7:LOCATE ,42:PRINT"  `ESC':";
-5380 COLOR 8:PRINT"Searches for correct guesses, "
-5390 LOCATE ,42:PRINT"        if pressed while displaying   "
-5400 LOCATE ,42:PRINT"        `";
-5410 COLOR 14,1:PRINT"Incorrect,try again";
-5420 COLOR 8,0:PRINT"'         "
-5430 COLOR 7:LOCATE ,42:PRINT"                                      "
-5440 LOCATE ,42:PRINT"            GAME FORMAT               "
-5450 LOCATE ,42:PRINT"                                      "
-5460 LOCATE ,42:PRINT"   RND:";
-5470 COLOR 8:PRINT"Current round                  "
-5480 COLOR 7:LOCATE ,42:PRINT"   INS:";
-5490 COLOR 8:PRINT"# of times `";
-5500 COLOR 7:PRINT"INS";
-5510 COLOR 8:PRINT"'-key is used   "
-5520 COLOR 7:LOCATE ,42:PRINT"   AVGTRYS/R:";
-5530 COLOR 8:PRINT"Average trys per round   "
-5540 COLOR 7:LOCATE ,42:PRINT"   AVGSECS/T:";
-5550 COLOR 8:PRINT"Average seconds per try  "
-5560 COLOR 7:LOCATE ,42:PRINT"   CORRECT:";
-5570 COLOR 8:PRINT"# of correct guesses       "
-5580 COLOR 7:LOCATE ,42:PRINT"   INCORRECT:";
-5590 COLOR 8:PRINT"# of incorrect guesses   "
-5600 COLOR 7:LOCATE ,42:PRINT"   TIME:";
-5610 COLOR 8:PRINT"Remaining game time         "
-5620 COLOR 7:LOCATE ,42:PRINT"   TIMER:";
-5630 COLOR 8:PRINT"Elapsed round time           ";
-5640 IF LEN(INKEY$) THEN 5640
-5650 IF LEN(INKEY$) THEN 5660 ELSE 5650
-5660 FOR ZZ=3 TO 24:LOCATE ZZ,42:PRINT SPACE$(38);:NEXT ZZ
-5670 COLOR 8:LOCATE 10,42:PRINT"     Next, once you press any key,"
-5680 LOCATE ,42:PRINT"             your game of"
-5690 LOCATE ,42:COLOR 14:PRINT"                 TRIO"
-5700 LOCATE ,42:COLOR 8:PRINT"              will begin."
-5710 DEF SEG=0:POKE 1050,PEEK(1052)
-5720 IF LEN(INKEY$) THEN RETURN ELSE 5720
-5730 COLOR 14,1:SCREEN 0,1,0:CLS:COLOR 14,4:LOCATE 12,15
-5740 IF ERR=53  THEN PRINT"Insert Game Disk":GOTO 5830
-5750 IF ERR=7  THEN PRINT"Note enough memory":GOTO 5830
-5760 IF ERR=57 OR ERR=71 THEN PRINT"Check Diskdrive":GOTO 5830
-5770 IF ERR=63  THEN PRINT"Disk is full":GOTO 5830
-5780 IF ERR=67  THEN PRINT"Too many files":GOTO 5830
-5790 IF ERR=68  THEN PRINT"No diskdrive":GOTO 5830
-5800 IF ERR=70  THEN PRINT"Disk is write protected":GOTO 5830
-5810 LOCATE 12,7:PRINT"Severe Error...Reset Game:"
-5820 IF LEN(INKEY$) THEN PRINT ERL;ERR:END ELSE PLAY"mf b64 p32":GOTO 5820
-5830 IF LEN(INKEY$) THEN COLOR 14,1:CLS:RESUME ELSE PLAY"mf b64 p32":GOTO 5830
-5840 SCREEN 0,1:COLOR 0,0:CLS
-5850  '
-5860  '@@@@ GAME SCREEN @@@@
-5870  '
-5880 COLOR 6
-5890 IF SCRN=2 THEN 5930
-5900 COLOR 6
-5910 LOCATE 25,40:PRINT CHR$(188);
-5920 LOCATE 24,40:PRINT CHR$(186);
-5930 IF SCRN=1 THEN 6000
-5940 COLOR 8
-5950 LOCATE 25,80:PRINT CHR$(188);
-5960 LOCATE 24,80:PRINT CHR$(186);
-5970 COLOR 6
-5980 LOCATE 25,40:PRINT CHR$(188);
-5990 LOCATE 24,40:PRINT CHR$(186);
-6000 COLOR 6
-6010 FOR LNE=2 TO 39
-6020 IF LNE<3 THEN LOCATE 25,LNE:PRINT CHR$(205);
-6030 IF LNE>19 AND LNE<21 THEN LOCATE 25,LNE:PRINT CHR$(205);
-6040 IF LNE>3 AND LNE<19 THEN LOCATE 23,LNE:PRINT CHR$(205);
-6050 IF LNE>5 AND LNE<17 THEN LOCATE 21,LNE:PRINT CHR$(205);
-6060 LOCATE 1,LNE:PRINT CHR$(205);
-6070 IF LNE>21 THEN 6080 ELSE 6120
-6080 LOCATE 3,LNE:PRINT CHR$(205);
-6090 LOCATE 10,LNE:PRINT CHR$(205);
-6100 LOCATE 12,LNE:PRINT CHR$(205);
-6110 LOCATE 25,LNE:PRINT CHR$(205);
-6120 IF LNE<21 THEN 6130 ELSE 6140
-6130 LOCATE 4,LNE:PRINT CHR$(205);
-6140 NEXT LNE
-6150 FOR LNE=2 TO 24
-6160 LOCATE LNE,1:PRINT CHR$(186);
-6170 LOCATE LNE,21:PRINT CHR$(186);
-6180 IF LNE<24 THEN LOCATE LNE,40:PRINT CHR$(186);
-6190 NEXT LNE
-6200 LOCATE 1,1:PRINT CHR$(201);
-6210 LOCATE 1,5:PRINT CHR$(209);
-6220 LOCATE 1,17:PRINT CHR$(209);
-6230 LOCATE 1,21:PRINT CHR$(203);
-6240 LOCATE 1,40:PRINT CHR$(187);
-6250 LOCATE 3,40:PRINT CHR$(185);
-6260 LOCATE 3,21:PRINT CHR$(204);
-6270 LOCATE 4,1:PRINT CHR$(204);
-6280 LOCATE 4,21:PRINT CHR$(185);
-6290 LOCATE 4,5:PRINT CHR$(207);
-6300 LOCATE 4,17:PRINT CHR$(207);
-6310 LOCATE 24,3:PRINT CHR$(186);SPC(15);CHR$(186);
-6320 LOCATE 22,5:PRINT CHR$(186);SPC(11);CHR$(186);
-6330 LOCATE 2,5:PRINT CHR$(179);SPC(11);CHR$(179);
-6340 LOCATE 3,5:PRINT CHR$(179);SPC(11);CHR$(179);
-6350 LOCATE 10,21:PRINT CHR$(204);
-6360 LOCATE 10,40:PRINT CHR$(185);
-6370 LOCATE 12,21:PRINT CHR$(204);
-6380 LOCATE 12,40:PRINT CHR$(185);
-6390 LOCATE 21,5:PRINT CHR$(201);
-6400 LOCATE 21,17:PRINT CHR$(187);
-6410 LOCATE 23,3:PRINT CHR$(201);
-6420 LOCATE 23,19:PRINT CHR$(187);
-6430 LOCATE 23,5:PRINT CHR$(202);
-6440 LOCATE 23,17:PRINT CHR$(202);
-6450 LOCATE 25,19:PRINT CHR$(200);
-6460 LOCATE 25,3:PRINT CHR$(188);
-6470 LOCATE 25,1:PRINT CHR$(200);
-6480 LOCATE 25,21:PRINT CHR$(202);
-6490 COLOR  7
-6500 LOCATE 2,2:PRINT"RND"
-6510 LOCATE 2,18:PRINT"INS"
-6520 LOCATE 24,5:PRINT"TIME";
-6530 LOCATE 24,12:PRINT"TIMER";
-6540 COLOR 14
-6550 LOCATE 22,8:PRINT"T R I O"
-6560 COLOR 7,1
-6570 LOCATE 3,2:PRINT USING"###";0      
-6580 LOCATE 3,18:PRINT USING"###";0     
-6590 LOCATE 25,5:PRINT USING"####";250;
-6600 LOCATE 25,11:PRINT"00:00.0";
-6610 COLOR 3,0
-6620 LOCATE 2,25:PRINT"YOUR SCORES"
-6630 LOCATE 4,27:PRINT"NAME:"
-6640 LOCATE 5,26:PRINT"SCORE:       0"
-6650 LOCATE 6,24:PRINT"CORRECT:       0"
-6660 LOCATE 7,22:PRINT"INCORRECT:       0"
-6670 LOCATE 8,22:PRINT"AVGTRYS/R:       0"
-6680 LOCATE 9,22:PRINT"AVGSECS/T:       0"
-6690 COLOR 1
-6700 LOCATE 11,25:PRINT"HIGH SCORES"
-6710 FOR LNE=14 TO 23
-6720 LOCATE LNE,39:PRINT"0";
-6730 NEXT LNE
-6740 IF SCRN=1 THEN COLOR 15 ELSE 6780
-6750 LOCATE 2,7:PRINT"COUNTDOWN"
-6760 LOCATE 3,10:PRINT"20"
-6770 RETURN
+4730 Color 14, 0: Locate 3, 13: Print Chr$(17), Chr$(205);
+4740 Color , 1: Print " ANSWER ";
+4750 If Len(InKey$) Then 4750
+4760 If Len(InKey$) Then 4770 Else GoTo 4760
+4770 Color 7, 0: Locate 4, 42: Print "             A sample round:          "
+4780 Color 8: Print: Locate , 42: Print "   1)The `";
+4790 Color 7: Print "ANSWER";
+4800 Color 8: Print "' is displayed.       "
+4810 Locate , 42: Print "     In this example it is `";
+4820 Color 14, 1: Print "7";
+4830 Color 8, 0: Print "'.       "
+4840 Locate , 42: Print "   2)Search for your three guesses. "
+4850 Locate , 42: Print "          In this example:          "
+4860 Locate , 42: Print "          `";
+4870 Color 7: Print "GUESS 1";
+4880 Color 8: Print "' is `";
+4890 Color 12: Print "6";
+4900 Color 8: Print "'            "
+4910 Locate , 42: Print "          `";
+4920 Color 7: Print "GUESS 2";
+4930 Color 8: Print "' is `";
+4940 Color 12: Print "2";
+4950 Color 8: Print "'            "
+4960 Locate , 42: Print "          `";
+4970 Color 7: Print "GUESS 3";
+4980 Color 8: Print "' is `";
+4990 Color 12: Print "5";
+5000 Color 8: Print "'            "
+5010 Color 12: Locate , 42: Print "            6 ";
+5020 Color 8: Print "x ";
+5030 Color 12: Print "2 ";
+5040 Color 8: Print "- ";
+5050 Color 12: Print "5 ";
+5060 Color 8: Print "= ";
+5070 Color 14, 1: Print "7";: Color , 0: Print "             "
+5080 Color 8, 0: Locate , 42: Print "   3)Enter your guesses in order of:  "
+5090 Locate , 42: Print "     `";
+5100 Color 7: Print "GUESS 1";
+5110 Color 8: Print "', `";
+5120 Color 7: Print "GUESS 2";
+5130 Color 8: Print "', `";
+5140 Color 7: Print "GUESS 3";
+5150 Color 8: Print "'. "
+5160 Locate , 42: Print "   4)The computer will check your     "
+5170 Locate , 42: Print "     set of guesses.                  "
+5180 Locate , 42: Print "   5)If correct, a new round begins.  "
+5190 Locate , 42: Print "   6)If incorrect, the same round     "
+5200 Locate , 42: Print "     continues.                       "
+5210 Color 12, 0: Locate 6, 8: Print "5"
+5220 Locate 8, 5: Print "2"
+5230 Locate 10, 2: Print "6"
+5240 If Len(InKey$) Then 5240
+5250 If Len(InKey$) Then 5260 Else GoTo 5250
+5260 Color 7: Locate 3, 42: Print "            SPECIAL KEYS              "
+5270 Color 7: Locate , 42: Print "                                      "
+5280 Locate 5, 42: Print "  `DEL':";
+5290 Color 8: Print "Erases guesses                "
+5300 Color 7: Locate , 42: Print "  `BACKSPACE':";
+5310 Color 8: Print "Erases last guess       "
+5320 Color 7: Locate , 42: Print "  `FN'-`END':";
+5330 Color 8: Print "Ends & saves game        "
+5340 Color 7: Locate , 42: Print "  `INS':";
+5350 Color 8: Print "Ends current round,           "
+5360 Locate , 42: Print "        displays correct guesses      "
+5370 Color 7: Locate , 42: Print "  `ESC':";
+5380 Color 8: Print "Searches for correct guesses, "
+5390 Locate , 42: Print "        if pressed while displaying   "
+5400 Locate , 42: Print "        `";
+5410 Color 14, 1: Print "Incorrect,try again";
+5420 Color 8, 0: Print "'         "
+5430 Color 7: Locate , 42: Print "                                      "
+5440 Locate , 42: Print "            GAME FORMAT               "
+5450 Locate , 42: Print "                                      "
+5460 Locate , 42: Print "   RND:";
+5470 Color 8: Print "Current round                  "
+5480 Color 7: Locate , 42: Print "   INS:";
+5490 Color 8: Print "# of times `";
+5500 Color 7: Print "INS";
+5510 Color 8: Print "'-key is used   "
+5520 Color 7: Locate , 42: Print "   AVGTRYS/R:";
+5530 Color 8: Print "Average trys per round   "
+5540 Color 7: Locate , 42: Print "   AVGSECS/T:";
+5550 Color 8: Print "Average seconds per try  "
+5560 Color 7: Locate , 42: Print "   CORRECT:";
+5570 Color 8: Print "# of correct guesses       "
+5580 Color 7: Locate , 42: Print "   INCORRECT:";
+5590 Color 8: Print "# of incorrect guesses   "
+5600 Color 7: Locate , 42: Print "   TIME:";
+5610 Color 8: Print "Remaining game time         "
+5620 Color 7: Locate , 42: Print "   TIMER:";
+5630 Color 8: Print "Elapsed round time           ";
+5640 If Len(InKey$) Then 5640
+5650 If Len(InKey$) Then 5660 Else GoTo 5650
+5660 For ZZ = 3 To 24: Locate ZZ, 42: Print Space$(38);: Next ZZ
+5670 Color 8: Locate 10, 42: Print "     Next, once you press any key,"
+5680 Locate , 42: Print "             your game of"
+5690 Locate , 42: Color 14: Print "                 TRIO"
+5700 Locate , 42: Color 8: Print "              will begin."
+5710 Def Seg = 0: Poke 1050, Peek(1052)
+5720 If Len(InKey$) Then Return Else GoTo 5720
+5730 Color 14, 1: Screen 0, 1, 0: Cls: Color 14, 4: Locate 12, 15
+5740 If Err = 53 Then Print "Insert Game Disk": GoTo 5830
+5750 If Err = 7 Then Print "Note enough memory": GoTo 5830
+5760 If Err = 57 Or Err = 71 Then Print "Check Diskdrive": GoTo 5830
+5770 If Err = 63 Then Print "Disk is full": GoTo 5830
+5780 If Err = 67 Then Print "Too many files": GoTo 5830
+5790 If Err = 68 Then Print "No diskdrive": GoTo 5830
+5800 If Err = 70 Then Print "Disk is write protected": GoTo 5830
+5810 Locate 12, 7: Print "Severe Error...Reset Game:"
+5820 If Len(InKey$) Then Print Erl; Err: End Else Play "mf b64 p32": GoTo 5820
+5830 If Len(InKey$) Then Color 14, 1: Cls: Resume Else Play "mf b64 p32": GoTo 5830
+5840 Screen 0, 1: Color 0, 0: Cls
+5850 '
+5860 '@@@@ GAME SCREEN @@@@
+5870 '
+5880 Color 6
+5890 If SCRN = 2 Then 5930
+5900 Color 6
+5910 Locate 25, 40: Print Chr$(188);
+5920 Locate 24, 40: Print Chr$(186);
+5930 If SCRN = 1 Then 6000
+5940 Color 8
+5950 Locate 25, 80: Print Chr$(188);
+5960 Locate 24, 80: Print Chr$(186);
+5970 Color 6
+5980 Locate 25, 40: Print Chr$(188);
+5990 Locate 24, 40: Print Chr$(186);
+6000 Color 6
+6010 For LNE = 2 To 39
+    6020 If LNE < 3 Then Locate 25, LNE: Print Chr$(205);
+    6030 If LNE > 19 And LNE < 21 Then Locate 25, LNE: Print Chr$(205);
+    6040 If LNE > 3 And LNE < 19 Then Locate 23, LNE: Print Chr$(205);
+    6050 If LNE > 5 And LNE < 17 Then Locate 21, LNE: Print Chr$(205);
+    6060 Locate 1, LNE: Print Chr$(205);
+    6070 If LNE > 21 Then 6080 Else GoTo 6120
+    6080 Locate 3, LNE: Print Chr$(205);
+    6090 Locate 10, LNE: Print Chr$(205);
+    6100 Locate 12, LNE: Print Chr$(205);
+    6110 Locate 25, LNE: Print Chr$(205);
+    6120 If LNE < 21 Then 6130 Else GoTo 6140
+    6130 Locate 4, LNE: Print Chr$(205);
+6140 Next LNE
+6150 For LNE = 2 To 24
+    6160 Locate LNE, 1: Print Chr$(186);
+    6170 Locate LNE, 21: Print Chr$(186);
+    6180 If LNE < 24 Then Locate LNE, 40: Print Chr$(186);
+6190 Next LNE
+6200 Locate 1, 1: Print Chr$(201);
+6210 Locate 1, 5: Print Chr$(209);
+6220 Locate 1, 17: Print Chr$(209);
+6230 Locate 1, 21: Print Chr$(203);
+6240 Locate 1, 40: Print Chr$(187);
+6250 Locate 3, 40: Print Chr$(185);
+6260 Locate 3, 21: Print Chr$(204);
+6270 Locate 4, 1: Print Chr$(204);
+6280 Locate 4, 21: Print Chr$(185);
+6290 Locate 4, 5: Print Chr$(207);
+6300 Locate 4, 17: Print Chr$(207);
+6310 Locate 24, 3: Print Chr$(186); Spc(15); Chr$(186);
+6320 Locate 22, 5: Print Chr$(186); Spc(11); Chr$(186);
+6330 Locate 2, 5: Print Chr$(179); Spc(11); Chr$(179);
+6340 Locate 3, 5: Print Chr$(179); Spc(11); Chr$(179);
+6350 Locate 10, 21: Print Chr$(204);
+6360 Locate 10, 40: Print Chr$(185);
+6370 Locate 12, 21: Print Chr$(204);
+6380 Locate 12, 40: Print Chr$(185);
+6390 Locate 21, 5: Print Chr$(201);
+6400 Locate 21, 17: Print Chr$(187);
+6410 Locate 23, 3: Print Chr$(201);
+6420 Locate 23, 19: Print Chr$(187);
+6430 Locate 23, 5: Print Chr$(202);
+6440 Locate 23, 17: Print Chr$(202);
+6450 Locate 25, 19: Print Chr$(200);
+6460 Locate 25, 3: Print Chr$(188);
+6470 Locate 25, 1: Print Chr$(200);
+6480 Locate 25, 21: Print Chr$(202);
+6490 Color 7
+6500 Locate 2, 2: Print "RND"
+6510 Locate 2, 18: Print "INS"
+6520 Locate 24, 5: Print "TIME";
+6530 Locate 24, 12: Print "TIMER";
+6540 Color 14
+6550 Locate 22, 8: Print "T R I O"
+6560 Color 7, 1
+6570 Locate 3, 2: Print Using "###"; 0
+6580 Locate 3, 18: Print Using "###"; 0
+6590 Locate 25, 5: Print Using "####"; 250;
+6600 Locate 25, 11: Print "00:00.0";
+6610 Color 3, 0
+6620 Locate 2, 25: Print "YOUR SCORES"
+6630 Locate 4, 27: Print "NAME:"
+6640 Locate 5, 26: Print "SCORE:       0"
+6650 Locate 6, 24: Print "CORRECT:       0"
+6660 Locate 7, 22: Print "INCORRECT:       0"
+6670 Locate 8, 22: Print "AVGTRYS/R:       0"
+6680 Locate 9, 22: Print "AVGSECS/T:       0"
+6690 Color 1
+6700 Locate 11, 25: Print "HIGH SCORES"
+6710 For LNE = 14 To 23
+    6720 Locate LNE, 39: Print "0";
+6730 Next LNE
+6740 If SCRN = 1 Then Color 15 Else GoTo 6780
+6750 Locate 2, 7: Print "COUNTDOWN"
+6760 Locate 3, 10: Print "20"
+6770 Return
 6780 '
 6790 '@@@@ INSTRUCTION SCREEN @@@@
 6800 '
-6810 COLOR 8
-6820 FOR LNE=42 TO 79
-6830 LOCATE 1,LNE:PRINT CHR$(205);
-6840 LOCATE 25,LNE:PRINT CHR$(205);
-6850 NEXT LNE
-6860 FOR LNE=2 TO 24
-6870 LOCATE LNE,41:PRINT CHR$(186);
-6880 IF LNE<24 THEN LOCATE LNE,80:PRINT CHR$(186);
-6890 NEXT LNE
-6900 LOCATE 1,41:PRINT CHR$(201);
-6910 LOCATE 1,80:PRINT CHR$(187);
-6920 LOCATE 25,41:PRINT CHR$(200);
-6930 COLOR 7
-6940 LOCATE 1,55:PRINT"INSTRUCTIONS"
-6950 LOCATE 25,54:PRINT"PRESS ANY KEY";
-6960 GRIDCOLOR=4
-6970 RANDOMIZE TIMER
-6980 COLOR GRIDCOLOR,0,1
-6990 GV=6
-7000 FOR GY=0 TO 6
-7010 GH=2
-7020 FOR GX=0 TO 6
-7030 IF GX=2 AND GY=0 THEN A(GX,GY)=5:GOTO 7070
-7040 IF GX=1 AND GY=1 THEN A(GX,GY)=2:GOTO 7070
-7050 IF GX=0 AND GY=2 THEN A(GX,GY)=6:GOTO 7070
-7060 A(GX,GY)=INT(RND*9)+1
-7070 LOCATE GV,GH,0
-7080 GH=GH+3
-7090 PRINT USING "#";A(GX,GY)
-7100 NEXT GX:GV=GV+2:NEXT GY
-7110 COLOR 14,1:LOCATE 3,11:PRINT"7"
-7120 RETURN
-7130 TIME=TIME-1:IF TIME=0 THEN PLAY"mb ml o4 c2":LOCATE 25,5:COLOR 14,1:PRINT USING"####";TIME;:LOCATE 20,7,0:COLOR 3,0:PRINT "GAME OVER":NEWGAME=0:LASTNAME$=NAMES$(CNAME):GOTO 4370
-7140 IF TIME=>20 THEN 7160
-7150 IF PLY=0 THEN PLY=1:PLAY"MB MS O4 C64" ELSE PLY=0
-7160 RETURN
-7170 COUNT=COUNT-1:LOCATE 3,10,0:PRINT USING"##";COUNT
-7180 IF COUNT>3 THEN PLAY"MF ms O3 A64" ELSE PLAY"mF o3 a32"
-7190 RETURN
-7200 COLOR 14,0:CLS:END
-7210 REM
-7220 REM ****SAVE GAME IN - GN$****
-7230 OPEN "O",#1,GN$+".TF":WRITE #1,MNSR,ROUND,SCORE(CNAME),TIME,TRYS,SECONDS,NAMES$(CNAME),CNSR,WNSR:CLOSE #1:RETURN
-7240 REM
-7250 REM ****LOAD GAME IN - GN$****
-7260 OPEN "I",#1,GN$+".TF":INPUT #1,MNSR,ROUND,SCORE(CNAME),TIME,TRYS,SECONDS,NAMES$(CNAME),CNSR,WNSR:CLOSE #1:RETURN
-7270 REM
-7280 REM
-7290 REM LOAD SAVED GAME?
-7291 O$="Load a Game-":O$(1)="no":O$(2)="yes":O=2:GOSUB 8500:SG=AA-1:COLOR 0,0,1:CLS:IF AA=0 THEN SG=0:RETURN 181 ELSE RETURN
-7420 REM
-7430 REM
-7440 REM save file names
-7450 OPEN "O",#1,"T.FF":FOR A=1 TO GN:WRITE #1,GN$(A):NEXT A:CLOSE #1:RETURN
-7460 REM
-7470 REM load file names
-7480 OPEN "I",#1,"T.FF":FOR A=1 TO 20
+6810 Color 8
+6820 For LNE = 42 To 79
+    6830 Locate 1, LNE: Print Chr$(205);
+    6840 Locate 25, LNE: Print Chr$(205);
+6850 Next LNE
+6860 For LNE = 2 To 24
+    6870 Locate LNE, 41: Print Chr$(186);
+    6880 If LNE < 24 Then Locate LNE, 80: Print Chr$(186);
+6890 Next LNE
+6900 Locate 1, 41: Print Chr$(201);
+6910 Locate 1, 80: Print Chr$(187);
+6920 Locate 25, 41: Print Chr$(200);
+6930 Color 7
+6940 Locate 1, 55: Print "INSTRUCTIONS"
+6950 Locate 25, 54: Print "PRESS ANY KEY";
+6960 GRIDCOLOR = 4
+6970 Randomize Timer
+6980 Color GRIDCOLOR, 0, 1
+6990 GV = 6
+7000 For GY = 0 To 6
+    7010 GH = 2
+    7020 For GX = 0 To 6
+        7030 If GX = 2 And GY = 0 Then A(GX, GY) = 5: GoTo 7070
+        7040 If GX = 1 And GY = 1 Then A(GX, GY) = 2: GoTo 7070
+        7050 If GX = 0 And GY = 2 Then A(GX, GY) = 6: GoTo 7070
+        7060 A(GX, GY) = Int(Rnd * 9) + 1
+        7070 Locate GV, GH, 0
+        7080 GH = GH + 3
+        7090 Print Using "#"; A(GX, GY)
+7100 Next GX: GV = GV + 2: Next GY
+7110 Color 14, 1: Locate 3, 11: Print "7"
+7120 Return
+7130 TIME = TIME - 1: If TIME = 0 Then Play "mb ml o4 c2": Locate 25, 5: Color 14, 1: Print Using "####"; TIME;: Locate 20, 7, 0: Color 3, 0: Print "GAME OVER": NEWGAME = 0: LASTNAME$ = NAMES$(CNAME): GoTo 4370
+7140 If TIME >= 20 Then 7160
+7150 If PLY = 0 Then PLY = 1: Play "MB MS O4 C64" Else PLY = 0
+7160 Return
+7170 COUNT = COUNT - 1: Locate 3, 10, 0: Print Using "##"; COUNT
+7180 If COUNT > 3 Then Play "MF ms O3 A64" Else Play "mF o3 a32"
+7190 Return
+7200 Color 14, 0: Cls: End
+7210 Rem
+7220 Rem ****SAVE GAME IN - GN$****
+7230 Open "O", #1, GN$ + ".TF": Write #1, MNSR, ROUND, SCORE(CNAME), TIME, TRYS, SECONDS, NAMES$(CNAME), CNSR, WNSR: Close #1: Return
+7240 Rem
+7250 Rem ****LOAD GAME IN - GN$****
+7260 Open "I", #1, GN$ + ".TF": Input #1, MNSR, ROUND, SCORE(CNAME), TIME, TRYS, SECONDS, NAMES$(CNAME), CNSR, WNSR: Close #1: Return
+7270 Rem
+7280 Rem
+7290 Rem LOAD SAVED GAME?
+7291 O$ = "Load a Game-": O$(1) = "no": O$(2) = "yes": O = 2: GoSub 8500: SG = AA - 1: Color 0, 0, 1: Cls: If AA = 0 Then SG = 0: Return 181 Else Return
+7420 Rem
+7430 Rem
+7440 Rem save file names
+7450 Open "O", #1, "T.FF": For A = 1 To GN: Write #1, GN$(A): Next A: Close #1: Return
+7460 Rem
+7470 Rem load file names
+7480 Open "I", #1, "T.FF": For A = 1 To 20
 7490 IF EOF(1) THEN GN=A-1 ELSE INPUT #1,GN$(A):NEXT A
 7500 CLOSE #1:IF GN=0 THEN SG=0:RETURN ELSE SG=1:RETURN
 7510 REM
