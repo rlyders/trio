@@ -679,7 +679,9 @@
 7460 Rem
 7470 Rem load file names
 7480 Open "I", #1, "T.FF": For A = 1 To 20
-7490 IF EOF(1) THEN GN=A-1 ELSE INPUT #1,GN$(A):NEXT A
+7485 For A = 1 To 20
+    7490 If EOF(1) Then GN = A - 1 Else Input #1, GN$(A)
+7495 Next A
 7500 CLOSE #1:IF GN=0 THEN SG=0:RETURN ELSE SG=1:RETURN
 7510 REM
 7520 REM choose from saved game list
